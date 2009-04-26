@@ -1,0 +1,274 @@
+C*********************************************************************
+         REAL FUNCTION DEGDIF(A1,A2)
+C*********************************************************************
+C
+C  GETS THE DIFFERENCE BETWEEN TWO ANGLES (A1-A2, DEGREES)
+C
+C     FLUDWIG, 7/2002
+C
+	DEGDIF=A2-A1
+	IF (DEGDIF .LT. -180.0) DEGDIF=DEGDIF+360.0
+	IF (DEGDIF .GT.  180.0) DEGDIF=DEGDIF-360.0
+C
+	RETURN
+C
+	END
+C
+C**********************************************
+	REAL FUNCTION SP(UU,VV)
+C**********************************************
+C
+C  FUNCTION TO GET SPEED FROM COMPONENTS
+C
+	SP=SQRT(UU*UU+VV*VV)
+C
+	RETURN
+	END
+C
+C**********************************************
+	REAL FUNCTION DD(UU,VV)
+C**********************************************
+C
+C  FUNCTION TO GET DIRECTION (DEGREES) FROM COMPONENTS
+C
+	PARAMETER (RAD2D=180./3.14159)
+C
+	IF (SP(UU,VV).GT.0.0) THEN
+	   DD=AMOD(540.+ RAD2D*ATAN2(UU,VV),360.)
+	ELSE
+	   DD=0.0
+	END IF
+C
+	RETURN
+	END
+C
+C***************************************************************
+	REAL FUNCTION XLINTR(X0,X1,Z,ZZ0,Z1)
+C***************************************************************
+C
+C  FUNCTION FOR LINEAR INTERPOLATION OF X TO PT Z BETWEEN ZZ0
+C  AND Z1, WHERE ITS VALUES ARE X0 AND X1
+C
+        IF (Z.EQ.ZZ0) THEN
+	   XLINTR=X0
+	ELSE IF (Z.EQ.Z1) THEN
+	   XLINTR=X1
+	ELSE
+	   XLINTR=X0+(X1-X0)*(Z-ZZ0)/(Z1-ZZ0)
+	END IF
+C
+	RETURN
+C
+	END
+C
+C**************************************************
+	REAL FUNCTION TPOT (PP,TT)
+C**************************************************
+C
+C  POTENTIAL TEMPERATURE (DEGREES K) FROM PRESSURE (PP, HP OR MB) 
+C  AND TEMPERATURE (TT, DEGREES CELSIUS).
+C
+C
+	TPOT=(TT+273.13)*((1000./PP)**0.288)
+C
+	RETURN
+C
+	END
+C
+C**************************************************
+	REAL  FUNCTION PT2T (PP,TT)
+C**************************************************
+C
+C  TEMPERATURE (DEGREES K) FROM PRESSURE (PP, HP OR MB) 
+C  AND POTENTIAL TEMPERATURE (TT, DEGREES K).
+C
+C
+	PT2T=TT*((PP/1000.)**0.288)
+C
+	RETURN
+C
+	END
+C
+C*************************************************************
+	REAL FUNCTION ALTSET(Z,P)
+C*************************************************************
+C 
+C  GETS LOCAL ALTIMETER SETTING (IN HG.) FROM STATION PRESSURE (NOT 
+C  REDUCED TO SEA LEVEL) AND THE STATION ELEVATION IN METERS.
+C  
+C  FROM A FORMULA PROVIDED BY MICHAEL SPLITT OF THE U. OF UTAH.
+C
+C	FLUDWIG, 4/01
+C
+	PARAMETER (BADAT=-9999.0,P0=1013.3,FACT=44308.0)
+	PARAMETER (XPON=0.19028,CV2MB=1013.25/29.921)
+C
+C     ALTIM IS THE ALTIMETER IN INCHES OF HG
+C     ELEV IS THE STATION ELEVATION IN METERS
+C
+C     ALTIMETER IN INCHES, CONVERT TO MB (HP) AS FOLLOWS:
+C
+	REAL Z,ALTMB,P
+C
+C  CONVERT HECTOPASCAL TO INCHES 
+C
+	ALTMB=P/(1.0-(0.0065*Z/288.0))**5.256
+        ALTSET=ALTMB/CV2MB
+C 
+C  DISCARD EXTREME VALUES, I.E. SEALEVEL PRESSURES OUTSIDE THE 
+C  APPROXIMATE RANGE 965 TO 1063 HP (MB)
+C
+	IF (ALTSET.GT.31.4 .OR. ALTSET.LT.28.5 ) ALTSET=BADAT
+C
+	RETURN
+C
+	END	   
+C
+C**************************************************
+	REAL FUNCTION CVT2P(ALTIM,ELEV)
+C**************************************************
+C 
+C  GETS LOCAL STATION PRESSURE (NOT REDUCED TO SEA LEVEL)
+C  USING THE LOCAL ALTIMETER SETTING IN INCHES OF HG AND THE
+C  STATION ELEVATION IN METERS.
+C  
+C  FROM A FORMULA PROVIDED BY MICHAEL SPLITT OF THE U. OF UTAH.
+C
+C	FLUDWIG, 4/01
+C
+	PARAMETER (BADAT=-999.9,P0=1013.3,FACT=44308.0)
+	PARAMETER (XPON=0.19028,CV2MB=1013.25/29.921)
+C
+C     ALTIM IS THE ALTIMETER IN INCHES OF HG
+C     ELEV IS THE STATION ELEVATION IN METERS
+C
+C     ALTIMETER IN INCHES, CONVERT TO MB (HP) AS FOLLOWS:
+C
+	REAL ALTIM,ELEV,ALTMB
+C
+C  CONVERT INCHES TO HECTOPASCAL
+C
+        ALTMB=ALTIM*CV2MB
+	CVT2P=ALTMB*(1.0-(0.0065*ELEV/288.0))**5.256
+C
+C  CHECK ELEVATION AGAINST STANDARD ATMOSPHERE -- SEE:
+C
+C       HOLMBOE, FORSYTHE & GUSTIN, 1945: "DYNAMIC METEOROLOGY,"
+C       J. WILEY & SONS, NEW YORK, P 120.
+C
+C  REJECT IF DIFFERENCE EXCEEDS 450 M -- THE EQUIVALENT OF 
+C  HAVING SEA LEVEL PRESSURE BETWEEN ABOUT 978 & 1058 MB)
+C
+	ZSTD=FACT*(1.0-(CVT2P/P0)**XPON)
+	IF (ABS(ZSTD-ELEV) .GT. 450.0) CVT2P=BADAT
+C
+	RETURN
+C
+	END
+C
+C****************************************************************
+	INTEGER FUNCTION JULMIN (KYEAR,IMO,MDATE,IHOUR,IMIN) 
+C****************************************************************
+C
+C  GETS MINUTE SINCE 0000 ON 1 JANUARY CORRESPONDING TO YEAR 
+C  KYEAR (FROM 1901 TO 2099) AND JULIAN DAY JD.  
+C
+C	FLUDWIG 3/02
+C
+	INTEGER LASTD (12),KYEAR,IMO,MDATE,IHOUR,IMIN
+C
+	DATA LASTD /0,31,59,90,120,151,181,
+     $              212,243,273,304,334/
+C
+C  CORRECT FOR LEAP YEAR EFFECT -- GOOD UNTIL 2100
+C
+	JADJ=LASTD(IMO)
+	IF (MOD(KYEAR,4) .EQ.0. AND. IMO.GT.2) THEN
+	  JADJ=JADJ+1
+	END IF
+C
+	IDAJUL=JADJ+MDATE-1
+	JULMIN=1440*IDAJUL+60*IHOUR+IMIN
+
+	RETURN
+	END
+C
+C**********************************************************************
+        SUBROUTINE LGNTRP(Y,X0,X1,X,Y0,Y1)
+C**********************************************************************
+C
+C DOES LOG-LINEAR INTERPOLATION OF Y VS. LOG X.
+C
+        IF (X1.EQ.X0 .OR. X.EQ.X0) THEN
+	   Y=Y0   
+        ELSE IF (X.EQ.X1) THEN
+	   Y=Y1
+        ELSE
+           RATIO = ALOG10(X/X0)/ALOG10(X1/X0)
+           Y = Y0 + RATIO * (Y1-Y0)
+        END IF
+C
+        RETURN
+        END
+C
+C**********************************************************************
+        REAL FUNCTION WNDWT(X,Y,XOBS,YOBS)
+C**********************************************************************
+C
+C   THIS VERSION DETERMINES THE SQUARED DISTANCE BETWEEN
+C   THE 2 PTS (X,Y) & (XOBS,YOBS).  
+C
+C		F. L. LUDWIG,  10/97
+C
+       INCLUDE 'NGRIDS.PAR'
+C
+       INCLUDE 'LIMITS.CMM'
+C
+	XDIF=XOBS-X
+	YDIF=YOBS-Y
+        DIST=SQRT(XDIF**2 + YDIF**2)
+C
+        IF (DIST.LT.D2MIN) DIST=D2MIN
+C
+        WNDWT=1.0/(DIST**DTWT)
+C
+        RETURN
+        END
+C
+C*********************************************************************
+        SUBROUTINE SETINT(IVALUE,IARRAY,NUM1,NUM2)
+C*********************************************************************
+C
+C       INITIALIZES ALL ELEMENTS OF ARRAY TO VALUE. (THIS SUBPROGRAM
+C       IS IDENTICAL TO 'SETMAT,' EXCEPT WITH INTEGER ARGUMENTS)
+C       REVISED 11/87
+C
+       INCLUDE 'NGRIDS.PAR'
+C
+        DIMENSION IARRAY(NXGRD,NYGRD)
+        DO 10 I=1,NUM1
+        DO 10 J=1,NUM2
+           IARRAY(I,J)=IVALUE
+   10   CONTINUE
+        RETURN
+        END
+C
+C*******************************************************************
+        SUBROUTINE SETMAT(VALUE,ARRAY,NUM1,NUM2)
+C*******************************************************************
+C
+C       INITIALIZES ALL ELEMENTS OF ARRAY TO VALUE.(THIS SUBPROGRAM IS
+C       IDETICAL TO 'SETINT,' EXCEPT WITH REAL ARGUMENTS.
+C       REVISED 11/87
+C
+        INCLUDE 'NGRIDS.PAR'
+C
+        DIMENSION ARRAY(NXGRD,NYGRD)
+        DO 10 I=1,NUM1
+        DO 10 J=1,NUM2
+           ARRAY(I,J)=VALUE
+   10   CONTINUE
+        RETURN
+        END
+C
+

@@ -1,0 +1,8 @@
+2005-01-30
+
+Initial release of GNU-WOCSS prepared with basic configure script and 
+automake config that attempts to check for several Fortran compilers 
+and environments.  Upgrades and other contributions are welcome...
+
+Please contact Steve Arnold <nerdboy#gentoo.org> for any questions 
+concerning this release.

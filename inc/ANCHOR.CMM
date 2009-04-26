@@ -1,0 +1,7 @@
+        COMMON /ANCHOR/ SLAT,SLNG,UTMAPX,UTMAPY,MDATE,
+     $                  IMO,IHOUR,NEND,XORIG,YORIG
+c
+        COMMON/CSFC/ SFCHT(NXGRD,NYGRD),SIGMA(NZGRD),
+     $               SFCLOW,SFCHI,ZRISE
+
+	 

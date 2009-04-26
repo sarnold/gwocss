@@ -1,0 +1,70 @@
+This is the GPL release of Winds On Critical Streamline Surfaces (GWOCSS), 
+a diagnostic windfield model for complex terrain.  It can be used for both 
+objective analysis (with physics and terrain) of observational data and as 
+a way to downscale prognostic model output (ie, to obtain finer resolution 
+winds from a coarser grid model output).
+
+Consult the INSTALL file to learn how to build and install binaries of 
+GWOCSS.  Note: in spite of what the above file says, you must install 
+GWOCCS by hand (make sure you create the required sub-directories).  
+Basically, just cd into the top-level gwocss src directory and run:
+
+./autogen.sh
+./configure
+./make
+
+It should only require a basic toolchain, ie, autoconf and an F77 compiler. 
+The FFLAGS are specific to g77, but the basic autoconf macros allow several 
+other Fortran compilers.  You can override the FFLAGS on the command line if 
+you're not using GNU Fortran.
+
+Please contact Steve Arnold <stephen.arnold _at_ acm.org> for any questions
+concerning this pre-release.
+
+See the following references for model details:
+
+Ludwig, F. L., J. M. Livingston, and R. M. Endlich, 1991: "Use of Mass 
+   Conservation and Dividing Streamline Concepts for Efficient Objective 
+   Analysis of Winds in Complex Terrain," J. Appl. Meteorol., 30, 1490-1499.
+
+Ludwig, F. L. and D. Sinton, 2000; Evaluating an Objective Wind Analysis 
+   Technique with a Long Record of Routinely Collected Data, J. Appl. 
+   Meteorol., 39, 335-348.
+
+Ludwig, F. L. and R. L. Street, 1995; Modification of Multiresolution Feature 
+   Analysis for Application to Three-Dimensional Atmospheric Wind Fields, J. 
+   Atmos. Sci., 52, 139-157.
+
+Ludwig, F. L., R. L. Street, J. M. Schneider and K. R. Costigan, 1996: 
+   Analysis of Small-Scale Patterns of Atmospheric Motion in a Sheared, 
+   Convective Boundary Layer, J. Geophys. Res. (Atmospheres), 101D, 
+   9391-9411.
+
+USING GWOCSS:
+
+The basic setup is to use the slcin and slcout directories for the
+default input and output files; legacy Fortran directory names have 
+been converted to lowercase, but not the filenames:
+
+slcin/RUNSTF1.DAT - runtime configuration and localization parameters,
+                    with sample data deafults (location near Salt Lake
+		    City, UT).
+
+slcin/SLC1KM.DAT - Topographic grid (1 km spacing) for above location.
+
+slcin/SLCFILES - names of input files (meteorlogical data, only one file
+                 for the sample problem).  See the next file...
+
+slcin/10162215WXIN - Input meteorological data, can contain both surface
+                     stations and upper air profiles.
+
+inc/NGRIDS.PAR - Grid parameters and filename & path sizes.
+
+inc/* - Fortran common include files.
+
+The file GWOCSS_overview.pdf contains details on the sample problem, 
+as well as the format for the input meteorological data file(s).  Note 
+the changes mentioned at the top of the document; the files provided 
+for the sample problem are the current (correct) format (you can also 
+read the source code).
+

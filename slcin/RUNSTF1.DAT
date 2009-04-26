@@ -1,0 +1,44 @@
+***************************Salt Lake City stuff*******************************
+slcout/						* CHPOUT -- 7 char path for outputs (default is ./slcout)
+.true., .true.          	 		* DBUG,dbug2 print flags
+.false.,.false.  	  			* dobin, bin output (t) or ascii (f), doflat--horiz (t) or terrain follow (f)
+12                           			* NLVL:number of flow surfaces used for calculations
+.0,.01,.02,.04,.08,.2,.3,.4,.5,.6,.8,1. 	* SIGMA(NLVL):fraction of AVTHK for calculation flow levels over low terr.
+9                           			* NFLAT: # of horiz. sfcs or terr. follow sfcs for interpol. (1st lvl at anem. ht,)
+10.,1400.,1500.,1600.,1700.,1800.,1900.,2000.,2500.   * zchooz: heights (m, msl) of horiz (msl) or terrain following (AGL) sfcs
+1.0						* SPDCNV factor to convert to m/s; 1 if in m/s, .515.for kts
+80,80                       			* MCRS,NCRS: # rows/cols  							
+1						* NSKIP ascii option writes every nskip grid pts in x & y.
+80,80						* NRYTX, NRYTY ascii number of grid points x & y.
+1,1 						* NASCX0, NASCY0 ascii write grid origin pt x,y).
+1.0                         			* DSCRS:dx -- grid spacing (km)
+382.55, 4471.55                   		* UTMAPX,UTMAPY:utms of reference point  
+1,1                 				* kgridx,kgridy, indices of reference point 
+2500.                         			* AVTHK -- ht (m) of top sfc over low point 
+1.0                          			* SLFAC slope fact 1st guess top sfc (0=flat,1=terr follow)
+0.1                          			* CMPRES max compress of space bet sfcs smaller=less rise
+0.001                          			* DPOTMIN min. theta lapse rate (deg/m) -- low stability lim
+0.05,10.0                       		* ZZERO,Z10 sfc roughness length (m) & anemometer ht. (m)
+0.1                          			* D2MIN: min. dist for interp. wts in grid units
+2.0                                     	* DTWT: distance weight power -- wt=1/(Dist**DTWT)
+20                           			* NIT, iteration limit in subroutine bal5.
+0.0                          			* ADJMAX: max adj fact near obs 0=no adj & 1=reg adj
+14,144                           		* lowix & lowiy -- ix & iy indices for 5 
+80,139                          		* ditto            representative low pts.
+8,63                        			* ditto
+79,66                            		* ditto
+78,83                         			* ditto
+55	                        		* NEND number of cases before stopping.
+.false.						* dowcmp -- write w component arrays
+.false.						* dothet -- write pot. temp. arrays
+.false.						* dopres -- write pressure arrays
+.false.						* doBRi -- write bulk Richardson number arrays
+.false.						* doBVpd -- write Brunt Vaisala period arrays
+.false.						* doobs -- writes obs vals at nearest data pt. & zeros/msg elsewhere
+.false.						* dowvsz - true writes wind profiles at selected grid pts instead
+5						* no of profiles to be written <=5.
+421.02   4479.37				* UTME & UTMN of 1st point -- NCAR
+427.27   4497.83				* UTME & UTMN of 2nd point -- WHEELER 
+432.35   4499.10				* UTME & UTMN of 3rd point -- MILL
+428.33   4511.47				* UTME & UTMN of 4th point -- ASU
+413.30   4488.68				* UTME & UTMN of 4th point -- PNL tethersond 1
