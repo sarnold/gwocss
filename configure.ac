@@ -15,8 +15,8 @@ AC_F77_LIBRARY_LDFLAGS
 dnl Checks for programs.
 AC_PROG_MAKE_SET
 
-AC_PROG_RANLIB
-AC_PROG_LIBTOOL
+dnl AC_PROG_RANLIB
+dnl AC_PROG_LIBTOOL
 dnl AC_PROG_INSTALL
 
 dnl override presets with user input if present

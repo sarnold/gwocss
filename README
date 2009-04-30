@@ -10,13 +10,16 @@ GWOCCS by hand (make sure you create the required sub-directories).
 Basically, just cd into the top-level gwocss src directory and run:
 
 ./autogen.sh
-./configure
+./configure (autogen will run configure by default)
 ./make
 
 It should only require a basic toolchain, ie, autoconf and an F77 compiler. 
-The FFLAGS are specific to g77, but the basic autoconf macros allow several 
-other Fortran compilers.  You can override the FFLAGS on the command line if 
-you're not using GNU Fortran.
+The FFLAGS are specific to gfortran, but the basic autoconf macros allow for 
+several other Fortran compilers.  You can override the FFLAGS on the command 
+line or edit src/Makefile.in if you're not using GNU Fortran.  Use the data 
+and configuration included with the source to verify correct operation.  The
+current code defaults to running in the parent directory of the input/output 
+directories.
 
 Please contact Steve Arnold <stephen.arnold _at_ acm.org> for any questions
 concerning this pre-release.

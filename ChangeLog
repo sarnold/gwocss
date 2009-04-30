@@ -1,4 +1,10 @@
-2008-06-19 Steve Arnold <nerdboy@gentoo.org>
+2008-06-19 Steve Arnold <stephen.arnold _at_ acm.org>
+
+Updated build configuration for newer autotools and gcc; mostly changes to 
+compiler flags and autotools *.ac files to clean up and simplify the build 
+process.
+
+2008-06-19 Steve Arnold <stephen.arnold _at_ acm.org>
 
 Initial release of WOCSS under GPL with basic autoconf/automake setup.
 Although the included license files are GPL v2, this should now be

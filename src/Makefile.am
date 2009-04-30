@@ -1,5 +1,6 @@
 
-AM_FFLAGS = -finit-local-zero -fno-automatic -fvxt-intrinsics-enable -funix-intrinsics-hide -fno-pedantic $(INCLUDES)
+AM_FFLAGS = -finit-local-zero -fno-automatic -fall-intrinsics -fdollar-ok \
+-std=legacy $(INCLUDES)
 
 INCLUDES = -I$(top_srcdir)/inc -I$(includedir) -I$(top_srcdir)
 
