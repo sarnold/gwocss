@@ -69,5 +69,5 @@ The file GWOCSS_overview.pdf contains details on the sample problem,
 as well as the format for the input meteorological data file(s).  Note 
 the changes mentioned at the top of the document; the files provided 
 for the sample problem are the current (correct) format (you can also 
-read the source code).
+read the source code).  Also, please ignore the Matlab references...
 
