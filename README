@@ -27,9 +27,9 @@ GWOCSS.  Note: in spite of what the above file says, you must install
 GWOCCS by hand (make sure you create the required sub-directories).  
 Basically, just cd into the top-level gwocss src directory and run:
 
-./autogen.sh
-./configure (autogen will run configure by default)
-./make
+$ ./autogen.sh
+$ ./configure (autogen will run configure by default)
+$ make
 
 It should only require a basic toolchain, ie, autoconf and an F77 compiler. 
 The FFLAGS are specific to gfortran, but the basic autoconf macros allow for 
