@@ -1,11 +1,13 @@
 dnl Process this file with autoconf to produce a configure script.
-AC_INIT(src/wocss.f)
+AC_INIT([gwocss],[2.2.3],[stephen.arnold42@gmail.com])
 
-AM_INIT_AUTOMAKE(gwocss, 2.2.3)
+AM_INIT_AUTOMAKE([1.9])
 
-AC_PREREQ(2.52)
+AC_PREREQ([2.52])
 
 AM_MAINTAINER_MODE
+
+AC_PREFIX_PROGRAM(gfortran)
 
 dnl Check Fortran stuff.
 AC_PROG_F77_C_O
@@ -35,6 +37,7 @@ dnl Checks for libraries.
 dnl Checks for header files.
 
 dnl Checks for typedefs, structures, and compiler characteristics.
+AC_TYPE_SIZE_T
 
 dnl Checks for library functions.
 

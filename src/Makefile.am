@@ -1,16 +1,17 @@
 
-AM_FFLAGS = -finit-local-zero -fno-automatic -fall-intrinsics -fdollar-ok \
--std=legacy $(INCLUDES)
 
-INCLUDES = -I$(top_srcdir)/inc -I$(includedir) -I$(top_srcdir)
+
+AM_FFLAGS     = -finit-local-zero -fno-automatic -fall-intrinsics -fdollar-ok -std=legacy $(AM_CPPFLAGS)
+
+AM_CPPFLAGS   = -I$(top_srcdir)/inc -I$(includedir) -I$(top_srcdir)
 
 LD            = $(FC)
 
-AM_LDFLAGS       = -g -static
+AM_LDFLAGS    = -g -static
 
-bin_PROGRAMS = gwocss
+bin_PROGRAMS  = gwocss
 
-gwocss_SOURCES =   bal5.f    \
+gwocss_SOURCES = bal5.f    \
                 betpar.f \
                 dopsig.f \
                 flowht.f \
@@ -29,5 +30,7 @@ gwocss_SOURCES =   bal5.f    \
                 winterp.f \
                 windest.f \
                 wocss.f
+
+gwocss_LDADD  = -lm
 
 
