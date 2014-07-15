@@ -39,6 +39,9 @@ and configuration included with the source to verify correct operation.  The
 current code defaults to running in the parent directory of the input/output 
 directories.
 
+Note: requires libm.a or the glibc-static/glibc-staticdev package from your 
+distro.
+
 Please contact Steve Arnold <stephen.arnold42 _at_ gmail.com> for any questions
 concerning this release.
 
