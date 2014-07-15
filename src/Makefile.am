@@ -1,6 +1,5 @@
 
 
-
 AM_FFLAGS     = -finit-local-zero -fno-automatic -fall-intrinsics -fdollar-ok -std=legacy $(AM_CPPFLAGS)
 
 AM_CPPFLAGS   = -I$(top_srcdir)/inc -I$(includedir) -I$(top_srcdir)
@@ -30,7 +29,5 @@ gwocss_SOURCES = bal5.f    \
                 winterp.f \
                 windest.f \
                 wocss.f
-
-gwocss_LDADD  = -lm
 
 
