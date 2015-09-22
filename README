@@ -1,6 +1,6 @@
 (G)WOCSS - A diagnostic windfield model for complex terrain.
   Original code: Copyright (C) 2002 Francis Ludwig
-  GNU/Linux port: Copyright (C) 2003-2013 Stephen L Arnold
+  GNU/Linux port: Copyright (C) 2003-2015 Stephen L Arnold
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -31,10 +31,17 @@ $ ./autogen.sh
 $ ./configure (autogen will run configure by default)
 $ make
 
-It should only require a basic toolchain, ie, autoconf and an F77 compiler. 
+You can override the usual user flags for debugging and/or optimization;
+the configure flag --enable-debug=yes will add "-g" if DBG is unset, so
+you can also override DBG="your-favorite-debugging flags" with configure
+as well.
+
+It should only require a basic gfotran toolchain, ie, autotools and gcc built
+with FORTRAN support.
+
 The FFLAGS are specific to gfortran, but the basic autoconf macros allow for 
 several other Fortran compilers.  You can override the FFLAGS on the command 
-line or edit src/Makefile.in if you're not using GNU Fortran.  Use the data 
+line or edit src/Makefile.in if you're not using GNU Fortran.  Use the model data 
 and configuration included with the source to verify correct operation.  The
 current code defaults to running in the parent directory of the input/output 
 directories.
@@ -44,6 +51,10 @@ distro.
 
 Please contact Steve Arnold <stephen.arnold42 _at_ gmail.com> for any questions
 concerning this release.
+
+The following recent AMS slides/abstract give a brief history/overview of GWOCSS:
+
+http://tinyurl.com/GWOCSS-intro
 
 See the following references for model details:
 
