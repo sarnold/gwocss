@@ -2,10 +2,11 @@ AUTOMAKE_OPTIONS = foreign
 
 SUBDIRS = src
 
-GW_SRCS = src/*.f
+GW_SRCS = src/*.f $(GW_INCS)
 GW_INCS = inc/*.CMM
 
-DOCS    = doxygen
+DOX     = doxygen
+DOCS    = docs
 
 INC     = -I$(top_srcdir)/inc
 
@@ -13,13 +14,13 @@ $(DOCS)/.keep_dir:
 	mkdir -p $(dir $@)
 	touch $@
 
-docs:	Doxyfile.html_cfg $(DOCS)/.keep_dir
+docs:	Doxyfile.html_cfg $(GW_SRCS) $(DOCS)/.keep_dir
 	rm -rf $(DOCS)/html
 	$(DOX) Doxyfile.html_cfg
 	@echo "API docs now in $(DOCS)/html"
 
 docsclean: clean
-	rm -rf $(DOCS) *.xml
+	rm -rf $(DOCS)/html $(DOCS)/.keep_dir *.xml
 
 am-clean:
 	rm -rf gwocss*tar.gz \

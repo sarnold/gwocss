@@ -1,0 +1,6 @@
+*.o
+
+src/gwocss
+
+docs/*
+
