@@ -1,7 +1,7 @@
 # Change Log
 
 ## [gwocss 2.2.4_pre20150922](https://github.com/sarnold/gwocss/releases/tag/2.2.4_pre20150922) (2015-09-22)
-[Full Changelog](https://github.com/sarnold/cccc/compare/2.2.3-r1...2.2.4_pre20150922)
+[Full Changelog](https://github.com/sarnold/gwocss/compare/2.2.3-r1...2.2.4_pre20150922)
 
 Another autotools update to cleanup the build and optimize for proper
 gfortran flags (-std and IEEE mth) and shared executable.  Builds and
@@ -14,7 +14,7 @@ output grid results have an occasional minor rounding difference on x86
 
 ## [2.2.3-r1](https://github.com/sarnold/gwocss/releases/tag/2.2.3-r1) (2014-07-15)
 
-[Full Changelog](https://github.com/sarnold/cccc/compare/2.2.3...2.2.3-r1)
+[Full Changelog](https://github.com/sarnold/gwocss/compare/2.2.3...2.2.3-r1)
 
 Updated build configuration for newer autotools and gcc; mostly changes to 
 compiler flags and autotools *.ac files to clean up and simplify the build 
