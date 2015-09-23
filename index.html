@@ -61,6 +61,18 @@
 
   <h2>Short Overview of Winds On Critical Streamline Surfaces</h2>
 
+  <p> GWOCSS is a mass-conservative flow surface-following physics-based
+   windfield model for fast calculation of gridded winds using terrain
+   data and minimal observational inputs.  The main requirements for
+   model localization are digital terrain data for the region of interest
+   and a minimum of either 1) three (3) independent surface observations with
+   pressure, or 2) one full upper air observation with pressure data (standard
+   METAR and rawinsonde data will work fine).  Other sources of surface and
+   upper data can also be used (the more good data the better) but all inputs
+   must be converted to the standard WOCSS input format (see the 
+   <A HREF="https://github.com/sarnold/gwocss/blob/master/slcin/10162215WXIN">sample input file</A>
+   for an example with many surface and upper air stations).
+
   <center>
   <A HREF="https://github.com/sarnold/gwocss"><IMG SRC="docs/wocss_flow.jpg" ALT="[ GWOCSS ]"></A>
   </center>
