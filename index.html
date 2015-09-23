@@ -63,7 +63,13 @@
 
   <p> GWOCSS is a mass-conservative flow surface-following physics-based
    windfield model for fast calculation of gridded winds using terrain
-   data and minimal observational inputs.  The main requirements for
+   data and minimal observational inputs.  GWOCSS is a diagnostic model
+   (rather than prognostic), so the output is essentially a fast and
+   mathematically/physically constrained objective analysis, or "nowcast".
+   The model is capable of several output types on multiple grid levels,
+   including 3D winds and turbulence parameters.
+
+   <p> The main requirements for
    model localization are digital terrain data for the region of interest
    and a minimum of either 1) three (3) independent surface observations with
    pressure, or 2) one full upper air observation with pressure data (standard
@@ -73,6 +79,16 @@
    <A HREF="https://github.com/sarnold/gwocss/blob/master/slcin/10162215WXIN">sample input file</A>
    for an example with many surface and upper air stations).
 
+   <p> The basic functional flow is shown below:
+    <ul>
+      <li>Inverse distance interpolation of surface observations in the lowest layer
+      <li>Inverse distance interpolation of upper air observations in the topmost layer
+      <li>At each grid point, fit a smooth profile between the horizontally interpolated wind at the bottom ( Z1 ) level and that at the top level ( Ztop )
+      <li>Interpolate ( Ui ) between profiles and add to the local ( Uref )
+      <li>Values agree with those at the top and bottom of the domain (determined from upper level and surface observations)
+      <li>Values agree with observed profiles
+    </ul>
+
   <center>
   <A HREF="https://github.com/sarnold/gwocss"><IMG SRC="docs/wocss_flow.jpg" ALT="[ GWOCSS ]"></A>
   </center>
@@ -81,25 +97,33 @@
   <p>
      Mass conservation model (Estoque & Bhumralkar, 1969)
   <ul>
-  <li>Sigma-coordinate
-  <li>Variational calculus
+  <li> Sigma-coordinate
+  <li> Variational calculus
   </ul>
      Endlich (1967): variational => iterative adjustment
   <ul>
-  <li>Faster, but not perfectly non-divergent
+  <li> Faster, but not perfectly non-divergent
   </ul>
      Endlich & Ludwig (1982): sigma => user defined surfaces
   <ul>
-  <li>Allowed surfaces to intersect terrain, but
-  <li>Required user to define surface shapes for each case
-  <li>Iterative adjustment forces flow around obstacles
+  <li> Allowed surfaces to intersect terrain, but
+  <li> Required user to define surface shapes for each case
+  <li> Iterative adjustment forces flow around obstacles
   </ul>
      Critical streamline concepts to define surfaces
   <ul>
-  <li>Analogous to do what skilled analysts do
-  <li>Iterative adjustment forces flow around obstacles
+  <li> Analogous to do what skilled analysts do
+  <li> Iterative adjustment forces flow around obstacles
   </ul>
 
+  <p>Operational / Research Uses of GWOCSS
+    <ol> 
+      <li> Real-time wind stress inputs for tidal current model of San Francisco Bay (WOCSS, USGS & San Jose State U)
+      <li> Real-time guidance for estimating stratus advection at the San Francisco Airport (WOCSS by NOAA forecasters at FAA Air Traffic Control Center)
+      <li> Estimation of pollutant or tracer trajectories (WOCSS, RAMS/MM5/WRF, by BAAQMD)
+      <li> Real-time space launch range wind and toxic propellant hazards (GWOCSS, USAF, VAFB)
+      <li> Estimating wind energy potential from archived observations (Endlich et al., 1982: JAM, 21, 1441-1454)
+    </ol>
   <P>&nbsp;
   </P>
   <P>&nbsp;
