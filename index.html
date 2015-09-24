@@ -57,7 +57,7 @@
       Software API documentation with call diagrams, etc.</li>
   </ul>
 
-  <h2>Short Overview of Winds On Critical Streamline Surfaces</h2>
+  <h2>Short Overview of GNU Winds On Critical Streamline Surfaces</h2>
 
   <p> GWOCSS is a mass-conservative flow surface-following physics-based
    windfield model for fast calculation of gridded winds using terrain
@@ -77,21 +77,26 @@
    <A HREF="https://github.com/sarnold/gwocss/blob/master/slcin/10162215WXIN">sample input file</A>
    for an example with many surface and upper air stations).
 
-   <p> The basic functional flow is shown below:
+  <h3>How does GWOCSS work?</h3>
+   <p> The basic algorithmic/functional flow of GWOCSS is shown below:
     <ul>
+      <li>Read configuration, terrain, and input data
       <li>Inverse distance interpolation of surface observations in the lowest layer
       <li>Inverse distance interpolation of upper air observations in the topmost layer
       <li>At each grid point, fit a smooth profile between the horizontally interpolated wind at the bottom ( Z1 ) level and that at the top level ( Ztop )
       <li>Interpolate ( Ui ) between profiles and add to the local ( Uref )
-      <li>Values agree with those at the top and bottom of the domain (determined from upper level and surface observations)
-      <li>Values agree with observed profiles
+      <ul>
+        <li>Values agree with those at the top and bottom of the domain (determined from upper level and surface observations)
+        <li>Values agree with observed profiles
+      </ul>
+      <li>Write selected output grids, pseudo-observations, and (optional) input data
     </ul>
 
   <center>
   <A HREF="https://github.com/sarnold/gwocss"><IMG SRC="docs/wocss_flow.jpg" ALT="[ GWOCSS ]"></A>
   </center>
 
-  <h3>How does G(NU)WOCSS work?</h3>
+  <h3>Short history of G(NU)WOCSS algorithm development</h3>
   <p>
      Mass conservation model (Estoque & Bhumralkar, 1969)
   <ul>
