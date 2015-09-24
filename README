@@ -32,9 +32,8 @@ $ ./configure (autogen will run configure by default)
 $ make
 
 You can override the usual user flags for debugging and/or optimization;
-the configure flag --enable-debug=yes will add "-g" if DBG is unset, so
-you can also override DBG="your-favorite-debugging flags" with configure
-as well.
+the configure flag --enable-debug is currently unused, so you will need
+to override CC and CCC with configure to change debug/optimization flags.
 
 It should only require a basic gfotran toolchain, ie, autotools and gcc built
 with FORTRAN support.
@@ -46,8 +45,9 @@ and configuration included with the source to verify correct operation.  The
 current code defaults to running in the parent directory of the input/output 
 directories.
 
-Note: requires libm.a or the glibc-static/glibc-staticdev package from your 
-distro.
+Note: previous versions required (static) libm.a or the glibc-static/glibc-staticdev 
+package from your distro.  This build should produce a shared executable with a
+chunk of static lilbgfotran bundled in.
 
 Please contact Steve Arnold <stephen.arnold42 _at_ gmail.com> for any questions
 concerning this release.
