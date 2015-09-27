@@ -4,9 +4,7 @@ AC_PREREQ([2.61])
 AC_INIT([gwocss],[2.2.4],[stephen.arnold42@gmail.com])
 AM_INIT_AUTOMAKE
 
-#AM_MAINTAINER_MODE
-
-AC_PREFIX_PROGRAM(gfortran)
+AM_MAINTAINER_MODE
 
 dnl Check Fortran stuff.
 dnl AC_PROG_F77_C_O
@@ -16,12 +14,8 @@ AC_PROG_FC
 AM_PROG_CC_C_O
 AC_F77_LIBRARY_LDFLAGS
 
-dnl disable shared linking if possible
-dnl LT_INIT([disable-shared])
-
 dnl Checks for programs.
 AC_PROG_MAKE_SET
-
 AC_PROG_RANLIB
 dnl AC_PROG_LIBTOOL
 AC_PROG_INSTALL
@@ -34,9 +28,6 @@ then
 fi
 dnl
 
-ARCHIVE="ar"
-ANSICFLAGS=$CFLAGS
-
 dnl Checks for header files.
 AC_STDC_HEADERS
 AC_HAVE_HEADERS(math.h)
@@ -45,10 +36,12 @@ dnl Checks for typedefs, structures, and compiler characteristics.
 AC_TYPE_SIZE_T
 
 dnl Checks for libraries.
-SAVED_CFLAGS=$CFLAGS
-CFLAGS="$CFLAGS -static"
-SAVED_LDFLAGS=$LDFLAGS
-LDFLAGS="$LDFLAGS -lm "
+dnl ANSICFLAGS=$CFLAGS
+dnl SAVED_CFLAGS=$CFLAGS
+dnl CFLAGS="$CFLAGS -static"
+dnl SAVED_LDFLAGS=$LDFLAGS
+dnl LDFLAGS="$LDFLAGS -lm "
+
 AC_MSG_CHECKING([whether -lm is needed])
 AC_LINK_IFELSE([AC_LANG_PROGRAM([[
 #ifndef __NO_MATH_INLINES

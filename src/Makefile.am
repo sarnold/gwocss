@@ -8,18 +8,19 @@ WARN           = -Wall -Wtabs
 TRAPS          = -fbacktrace -ffpe-trap=zero,overflow,underflow
 IEEE           = -fno-unsafe-math-optimizations -frounding-math -fsignaling-nans
 
-AM_FFLAGS      = -std=gnu -g -fall-intrinsics \
-                 $(CFLAGS) $(WARN) $(LEGACY) \
+AM_FFLAGS      = -std=gnu $(DBG) -fPIC -DPIC \
+                 -fall-intrinsics \
+                 $(WARN) $(LEGACY) \
                  $(IEEE) $(TRAPS) \
-                 $(AM_CPPFLAGS) -fPIC -DPIC
+                 $(AM_CPPFLAGS)
 
 gwocss_FFLAGS  = $(AM_FFLAGS)
 
 gwocss_LDFLAGS = -static-libgfortran
 
-bin_PROGRAMS   = gwocss
+pkglibexec_PROGRAMS   = gwocss
 
-gwocss_SOURCES = bal5.f    \
+gwocss_SOURCES = bal5.f \
                  betpar.f \
                  dopsig.f \
                  flowht.f \
