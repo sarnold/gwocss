@@ -1,0 +1,88 @@
+#!/sbin/runscript
+# $Id$
+# Copyright 1999-2015 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+gwocss_homedir="${GHOMEDIR}"
+gwocss_datadir="${GDATADIR}"
+gwocss_bindir="${GBINDIR}"
+gwocss_domains="${DOMAINS}"
+
+extra_commands="check_config check_domains setup_demo"
+
+depend() {
+	need localmount net
+	use clock cron
+}
+
+check_domains() {
+	if [ -z "${gwocss_domains}" ]; then
+		eerror "No domains found, check your config."
+		return 1
+	else
+		for domain in ${gwocss_domains}; do
+			dir=${gwocss_homedir}/${domain}
+			checkpath -d -m 1775 -o gwocss:gwocss ${dir}
+		done
+	fi
+}
+
+check_config() {
+	if [ "${ENABLE}" = "no" ] ; then
+		ewarn "Config not enabled, nothing to do."
+		return 0
+	fi
+
+	file="${gwocss_bindir}/gwocss"
+	if [ -f ${file} ] ; then
+		checkpath -f -m 2755 -o root:gwocss ${file}
+	else
+		eerror "${file} not found"
+		eerror "HINT: Try re-installing the gwocss package."
+		return 1
+	fi
+
+	dir=${gwocss_homedir}
+	if [ -d ${dir} ] ; then
+		checkpath -d -m 1775 -o gwocss:gwocss ${dir}
+	else
+		eerror "${gwocss_homedir} not found"
+		eerror "HINT: Check ${gwocss_homedir} setting in /etc/conf.d/gwocss"
+		return 1
+	fi
+}
+
+setup_demo() {
+	cp -Rf ${gwocss_datadir}/{slcin,slcout} \
+		${gwocss_homedir}/demo/ || return 1
+}
+
+start() {
+	ebegin "Checking gwocss configuration"
+
+	check_config || return 1
+
+	[ "${ENABLE}" = "yes" ] && check_domains
+	local retval=$?
+
+	if [ $retval -ne 0 ] ; then
+		eerror "Check your config and related files and directories."
+		eend $retval
+		return $retval
+	fi
+
+	if [ "${gwocss_domains}" = "demo" ]; then
+		setup_demo || return 1
+	fi
+
+	eend $retval
+}
+
+stop() {
+	if [ "${ENABLE}" = "no" ]; then
+		ewarn "Config not enabled, nothing to do."
+		return 0
+	fi
+
+	return 0
+}

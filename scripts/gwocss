@@ -1,0 +1,81 @@
+#!/bin/sh
+# Run gwocss on one or more modeling domains.
+
+# Copyright (C) 2015 Stephen L Arnold
+
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License along
+# with this program; if not, write to the Free Software Foundation, Inc.,
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+version="gwocss wrapper script (gwocss) 0.1
+Copyright (C) 2015 Stephen L Arnold
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+
+Written by Steve Arnold."
+
+usage="Usage: $0 DOMAIN [DOMAIN] ...
+Run gwocss on one or more modeling domains in the gwocss state dir.
+
+      --help        display this help and exit
+      --version     display version information and exit
+
+Assumes current directory is parent of at least one domain directory.
+Intended for use with config file and init script, don't use this
+script without a proper setup.
+
+Report bugs to https://github.com/sarnold/gwocss/issues"
+
+[ -z "$@" ] && exec echo "$usage"
+
+case $1 in
+--help)    exec echo "$usage";;
+--version) exec echo "$version";;
+esac
+
+GWOCSS_BIN=gwocss
+confdir='/etc/conf.d'
+GWOCSS_CONF=$confdir/gwocss
+
+if [ -e $GWOCSS_CONF ] ; then
+	. $GWOCSS_CONF
+	if [ "${ENABLE}" = "no" ] ; then
+		echo "Disabled in ${GWOCSS_CONF}, please edit your config..."
+		return 0
+	fi
+else
+	echo "No ${GWOCSS_CONF}, is your install broken?..."
+	return 1
+fi
+
+bindir="${GBINDIR}"
+case $1 in
+--__bindir) bindir=${2?}; shift; shift;;
+esac
+
+PATH=$bindir:/usr/bin:/bin
+DOMAIN_ARGS="$@"
+
+cd $GHOMEDIR
+if [ -x $bindir/$GWOCSS_BIN ] ; then
+	for domain in $DOMAIN_ARGS ; do
+		pushd $domain > /dev/null
+			exec $GWOCSS_BIN
+		popd > /dev/null
+	done
+else
+	echo "Missing gwocss binary; bindir set correctly?"
+fi
+
+## end of /usr/bin/gwocss

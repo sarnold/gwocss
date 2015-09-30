@@ -1,0 +1,35 @@
+# ENABLE:
+# Do you want to enable gwocss setup script?  You need at least one
+# domain setup (eg, topography, localized config file, and minimum
+# weather inputs.  Set to yes and leave the demo domain to test.
+#
+# no - Do not enable gwocss setup script
+# yes - Enable gwocss domain setup script
+
+ENABLE="no"
+
+# DOMAINS:
+# This a space-separated list of one or more modeling domains for gwocss
+# (nothing to do with DNS domains).  Must be valid directory names with
+# no spaces in the names; each domain will be created under the gwocss
+# HOME dir, each with its own set of input/output directories, configs,
+# and terrain data.
+#
+# demo - setup example domain (copy from gwocss data dir)
+# foo bar baz - your own domain configs
+
+DOMAINS="demo"
+
+# Default paths for system-wide installation (only change these if you
+# know what you are doing!)
+
+# gwocss home dir, where modeling domains are configured
+GHOMEDIR="/var/lib/gwocss"
+
+# gwocss reference domain and data files (also used for demo domain)
+GDATADIR="/usr/share/gwocss"
+
+# gwocss bin directory (not the wrapper script)
+GBINDIR="/usr/libexec/gwocss"
+
+

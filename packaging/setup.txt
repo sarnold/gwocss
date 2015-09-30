@@ -1,0 +1,12 @@
+gentoo/ has openrc init script and conf.d config file.
+
+debian/ has config for /et/default (conf file is also used by shell script)
+
+If you write a custom init script for another distro, you can source the conf
+file and use the config variables in your script.  The init script doesn't
+run anything persistent, but is used to setup the required directories and
+permissions.  GWOCSS requires a writable "home" with the proper input and
+output subdirectories (slcin and slicout).
+
+Helper scripts and other tools are on the TODO list; see the docs and run the
+demo config to see how it works.
