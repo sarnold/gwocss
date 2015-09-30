@@ -16,6 +16,8 @@ INC     = -I$(top_srcdir)/inc
 
 .NOTPARALLEL:	default
 
+dist_bin_SCRIPTS = scripts/gwocss
+
 nobase_pkgdata_DATA = slcin/10162215WXIN \
                       slcin/RUNSTF1.DAT \
                       slcin/SLC1KM.DAT \

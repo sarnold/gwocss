@@ -58,8 +58,8 @@ a=sqrt(b);
     AC_MSG_RESULT([yes])
     AC_CHECK_LIB([m],[sqrt])
   ])
-CFLAGS=$SAVED_CFLAGS
-LDFLAGS=$SAVED_LDFLAGS
+dnl CFLAGS=$SAVED_CFLAGS
+dnl LDFLAGS=$SAVED_LDFLAGS
 
 dnl Checks for library functions.
 
