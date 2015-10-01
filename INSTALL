@@ -1,7 +1,7 @@
 Basic Installation
 ==================
 
-   These are generic installation instructions.
+   These are (mostly) generic installation instructions.
 
    The `configure' shell script attempts to guess correct values for
 various system-dependent variables used during compilation.  It uses
@@ -26,21 +26,24 @@ it or regenerate `configure' using a newer version of `autoconf'.
 The simplest way to compile this package is:
 
   1. `cd' to the directory containing the package's source code and type
+      ./autogen.sh to generate the input to configure, which will also run
      `./configure' to configure the package for your system.  If you're
      using `csh' on an old version of System V, you might need to type
      `sh ./configure' instead to prevent `csh' from trying to execute
      `configure' itself.
 
-     Running `configure' takes awhile.  While running, it prints some
-     messages telling which features it is checking for.
+     Running `configure' should be quick; while running, it prints some
+     messages telling which features it is checking for (mainly a valid
+     Fortran compiler).  The current package flags are for GNU gfortran.
 
-  2. Type `make' to compile the package.
+  2. Type `make' to compile the package.  You can overide the standard
+     user flags (ie, FC, FFLAGS, etc) as needed (add debug flags, etc).
 
   3. Optionally, type `make check' to run any self-tests that come with
      the package.
 
   4. Type `make install' to install the programs and any data files and
-     documentation.
+     documentation.  Set DESTDIR if you need a custom install root.
 
   5. You can remove the program binaries and object files from the
      source code directory by typing `make clean'.  To also remove the
@@ -59,7 +62,7 @@ the `configure' script does not know about.  You can give `configure'
 initial values for variables by setting them in the environment.  Using
 a Bourne-compatible shell, you can do that on the command line like
 this:
-     CC=c89 CFLAGS=-O2 LIBS=-lposix ./configure
+     FC=f77 CFLAGS=-O2 LIBS=-lfortran ./configure
 
 Or on systems that have the `env' program, you can do it like this:
      env CPPFLAGS=-I/usr/local/include LDFLAGS=-s ./configure

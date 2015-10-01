@@ -1,3 +1,11 @@
+2015-09-22
+
+2.2.4_pre20150922 prerelease
+
+Updated autotools build config, compiler options, etc,   Added warning flags
+and IEEE math flags, started verification of floating point implementation
+and refactoring plan.  Gentoo package and documentation updates on-going.
+
 2013-11-26
 
 Extracted from subversion and migrated to github.  No changes were made for
@@ -15,4 +23,4 @@ automake config that attempts to check for several Fortran compilers
 and environments.  Upgrades and other contributions are welcome...
 
 Please contact Steve Arnold <stephen.arnold42 _at_ gmail.com> for any questions 
-concerning this release.
+concerning these releases.

@@ -1,10 +1,10 @@
 (G)WOCSS - A diagnostic windfield model for complex terrain.
   Original code: Copyright (C) 2002 Francis Ludwig
-  GNU/Linux port: Copyright (C) 2003-2013 Stephen L Arnold
+  GNU/Linux port: Copyright (C) 2003-2015 Stephen L Arnold
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
+    the Free Software Foundation; either version 3 of the License, or
     (at your option) any later version.
 
     This program is distributed in the hope that it will be useful,
@@ -24,8 +24,8 @@ Environmental Fluid Mechanics Laboratory, Stanford University
 GNU/Linux port:
 
 Stephen Arnold <stephen.arnold42 _at_ gmail.com>
-http://www.gentoogeek.org/steves_world/software
-Gentoo Linux Developer, Arthrex, VCT, and Allan Hancock College
+http://www.gentoogeek.org/ and https://github.com/sarnold
+Gentoo Linux Developer, VCT Labs, and Allan Hancock College
 
 Previous Scientific Contributors:
 
