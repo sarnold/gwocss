@@ -37,7 +37,7 @@ check_config() {
 
 	file="${gwocss_bindir}/gwocss"
 	if [ -f ${file} ] ; then
-		checkpath -f -m 0755 -o root:root ${file}
+		checkpath -f -m 2775 -o root:root ${file}
 	else
 		eerror "${file} not found"
 		eerror "HINT: Try re-installing the gwocss package."
@@ -51,6 +51,17 @@ check_config() {
 		eerror "${gwocss_homedir} not found"
 		eerror "HINT: Check ${gwocss_homedir} setting in /etc/conf.d/gwocss"
 		return 1
+	fi
+
+	if [[ ${gwocss_domains} = *demo* ]] ; then
+		setup_demo
+	fi
+	local retval=$?
+
+	if [ $retval -ne 0 ] ; then
+		eerror "Problem setting up demo domain. Check ${gwocss_homedir}/demo."
+		eend $retval
+		return $retval
 	fi
 }
 
@@ -67,15 +78,13 @@ start() {
 
 	check_config || return 1
 
-	if "demo" in "${gwocss_domains}" ; then
-		setup_demo || return 1
+	if [ "${ENABLE}" = "yes" ] ; then
+		check_domains
 	fi
-
-	[ "${ENABLE}" = "yes" ] && check_domains
 	local retval=$?
 
 	if [ $retval -ne 0 ] ; then
-		eerror "Check your config and related files and directories."
+		eerror "Error running gwocss config check; check your confing and restart."
 		eend $retval
 		return $retval
 	fi
@@ -84,6 +93,7 @@ start() {
 }
 
 stop() {
+	ebegin "Checking gwocss domains"
 	if [ "${ENABLE}" = "no" ] ; then
 		ewarn "Config not enabled, nothing to do."
 		return 0
@@ -91,10 +101,10 @@ stop() {
 		if [ -z "${gwocss_domains}" ] ; then
 			ewarn "gwocss enabled but no domains configured."
 		else
-			elog "gwocss enabled, currently configured model domains are:"
-			elog "    ${gwocss_domains}"
+			einfo "gwocss enabled, currently configured model domains are:"
+			einfo "    ${gwocss_domains}"
 		fi
 	fi
 
-	return 0
+	eend
 }
