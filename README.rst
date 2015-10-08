@@ -51,7 +51,7 @@ output directories.
          a chunk of static lilbgfotran bundled in.
 
 To build and test gwocss manually, clone the repo or download the tarball.
-Unpack and cd into the top-level gwocss src directory and run:
+Unpack and cd into the top-level gwocss src directory and run::
 
  $ ./autogen.sh
  $ ./configure (autogen will run configure by default)
@@ -67,7 +67,7 @@ configuration file (the default is the "demo" domain which uses the sammple
 data from Salt Lake).  Add yourself to the gwocss group and then add your
 own domains in the same way, eg, make a direectory for your domain with 
 sclin and slcout subdirs.  Assuming you already have config, topography,
-and the minimum input data:
+and the minimum input data::
 
  $ mkdir -p /var/lib/gwocss/test1/{slcin,slcout}
  $ cp ${HOME}/test1/input_files/* /var/lib/gwocss/test1/slcin/
