@@ -81,7 +81,7 @@ tools are on the TODO list, feel free to contribute ;)
 
 The basic setup uses the slcin and slcout directories for the default input
 and output files; legacy Fortran directory names have been converted to
-lowercase, but not the filenames:
+lowercase, but not the filenames::
 
  slcin/RUNSTF1.DAT  - runtime configuration and localization parameters,
                       with sample data defaults (location near Salt Lake
