@@ -15,3 +15,7 @@ script: ./autogen.sh && make && make docs
 install: true
 
 sudo: false
+
+notifications:
+  irc: "chat.freenode.net#code-hell"
+
