@@ -1,0 +1,16 @@
+addons:
+  apt:
+    packages:
+    - doxygen
+    - graphviz
+    - gfortan
+    - autoconf
+    - automake
+
+language: c
+
+script: ./autogen.sh && make && make docs
+
+install: true
+
+sudo: false
