@@ -3,7 +3,8 @@ addons:
     packages:
     - doxygen
     - graphviz
-    - gfortan
+    - gfortran
+    - g77
     - autoconf
     - automake
 
