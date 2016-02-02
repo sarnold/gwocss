@@ -2,6 +2,18 @@
  (G)WOCSS - A diagnostic windfield model for complex terrain
 =============================================================
 
+.. image:: https://img.shields.io/badge/license-GPL2-blue.svg?dummy
+   :target: https://github.com/sarnold/gwocss/blob/master/COPYING
+
+.. image:: https://badge.fury.io/gh/sarnold%2Fgwocss.svg
+   :target: https://badge.fury.io/gh/sarnold%2Fgwocss
+
+.. image:: https://travis-ci.org/sarnold/gwocss.svg?branch=master
+   :target: https://travis-ci.org/sarnold/gwocss
+
+.. image:: http://githubbadges.herokuapp.com/sarnold/gwocss/issues.svg?style=flat-square
+   :target: https://github.com/sarnold/gwocss/issues
+
 .. sidebar:: Original code: Copyright (C) 2002 Francis Ludwig
    :subtitle: GNU/Linux port: Copyright (C) 2003-2015 Stephen L Arnold
 
