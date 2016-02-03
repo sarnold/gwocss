@@ -4,7 +4,7 @@
 [Full Changelog](https://github.com/sarnold/gwocss/compare/2.2.3-r1...2.2.4_pre20150922)
 
 Another autotools update to cleanup the build and optimize for proper
-gfortran flags (-std and IEEE mth) and shared executable.  Builds and
+gfortran flags (-std and IEEE math) and shared executable.  Builds and
 runs cleanly with latest gcc/gfortran 4.9.3 but the source code still
 needs plenty of cleanup to bring it out of the F77 dark ages, and the
 output grid results have an occasional minor rounding difference on x86
