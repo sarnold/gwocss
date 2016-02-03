@@ -2,7 +2,7 @@
  (G)WOCSS - A diagnostic windfield model for complex terrain
 =============================================================
 
-.. image:: https://img.shields.io/badge/license-GPL2-blue.svg?dummy
+.. image:: https://img.shields.io/badge/license-GPL3-blue.svg?dummy
    :target: https://github.com/sarnold/gwocss/blob/master/COPYING
 
 .. image:: https://badge.fury.io/gh/sarnold%2Fgwocss.svg
