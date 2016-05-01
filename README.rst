@@ -11,7 +11,7 @@
 .. image:: https://travis-ci.org/sarnold/gwocss.svg?branch=master
    :target: https://travis-ci.org/sarnold/gwocss
 
-.. image:: http://githubbadges.herokuapp.com/sarnold/gwocss/issues.svg?style=flat-square
+.. image:: http://githubbadges.herokuapp.com/sarnold/gwocss/issues.svg?style=flat
    :target: https://github.com/sarnold/gwocss/issues
 
 .. sidebar:: Original code: Copyright (C) 2002 Francis Ludwig
