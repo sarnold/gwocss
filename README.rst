@@ -19,7 +19,7 @@
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2 of the License, or
+   the Free Software Foundation; either version 3 of the License, or
    (at your option) any later version.
    
    This program is distributed in the hope that it will be useful,
@@ -52,8 +52,8 @@ the configure flag --enable-debug sets DBG = -g so you will need to add your
 own debug flags or override the user flags with configure to change debug or
 optimization settings.
 
-The basic requirement is a gfotran toolchain, ie, autotools and gcc built
-with FORTRAN support but should work with any modern Fortran compiler.
+The basic requirement is a fortran toolchain, ie, autotools and gcc built
+with fortran support but should work with any modern FORTRAN compiler.
 
 The FFLAGS are specific to gfortran, but the basic autoconf macros allow for
 several other Fortran compilers.  You can override the FFLAGS on the command
@@ -81,8 +81,8 @@ The Gentoo package will install some helper scripts and a config file to setup
 the gwocss sample data and runtime directories based on the domain(s) in the
 configuration file (the default is the "demo" domain which uses the sammple
 data from Salt Lake).  Add yourself to the gwocss group and then add your
-own domains in the same way, eg, make a direectory for your domain with
-sclin and slcout subdirs.  Assuming you already have config, topography,
+own domains in the same way, eg, make a directory for your domain with
+sclin and slcout subdirectories.  Assuming you already have config, topography,
 and the minimum input data::
 
     $ mkdir -p /var/lib/gwocss/test1/{slcin,slcout}
@@ -90,7 +90,7 @@ and the minimum input data::
     $ gwocss test1
 
 Alternatively, you can run the gwocss binary from the build directory in your
-$HOME dir somewhere once you have your own domain setup.  For production use
+$HOME directory somewhere once you have your own domain setup.  For production use
 you would need something to retrieve/prepare the input files and something
 else to trigger the model when new input data is available (some of these
 tools are on the TODO list, feel free to contribute ;)
