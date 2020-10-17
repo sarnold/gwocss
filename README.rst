@@ -80,7 +80,7 @@ Using GWOCSS
 
 The Gentoo package will install some helper scripts and a config file to setup
 the gwocss sample data and runtime directories based on the domain(s) in the
-configuration file (the default is the "demo" domain which uses the sammple
+configuration file (the default is the "demo" domain which uses the sample
 data from Salt Lake).  Add yourself to the gwocss group and then add your
 own domains in the same way, eg, make a directory for your domain with
 sclin and slcout subdirectories.  Assuming you already have config, topography,
