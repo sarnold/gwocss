@@ -11,11 +11,12 @@
 .. image:: https://travis-ci.org/sarnold/gwocss.svg?branch=master
    :target: https://travis-ci.org/sarnold/gwocss
 
-.. image:: http://githubbadges.herokuapp.com/sarnold/gwocss/issues.svg?style=flat
-   :target: https://github.com/sarnold/gwocss/issues
+.. image:: https://img.shields.io/github/issues/sarnold/gwocss
+   :target: https://github.com/sarnold/gwocss/issues?q=is:issue+is:open
+   :alt: Open Issues
 
 .. sidebar:: Original code: Copyright (C) 2002 Francis Ludwig
-   :subtitle: GNU/Linux port: Copyright (C) 2003-2015 Stephen L Arnold
+   :subtitle: GNU/Linux port: Copyright (C) 2003-2020 Stephen L Arnold
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
