@@ -4,19 +4,22 @@
 
 .. image:: https://img.shields.io/badge/license-GPL3-blue.svg?dummy
    :target: https://github.com/sarnold/gwocss/blob/master/COPYING
+   :alt: License
 
-.. image:: https://badge.fury.io/gh/sarnold%2Fgwocss.svg
-   :target: https://badge.fury.io/gh/sarnold%2Fgwocss
+.. image:: image:: https://img.shields.io/github/v/tag/sarnold/gwocss?color=green&include_prereleases&label=latest%20release
+   :target: https://github.com/arnold/gwocss/releases
+   :alt: GitHub tag (including pre-release)
 
 .. image:: https://travis-ci.org/sarnold/gwocss.svg?branch=master
    :target: https://travis-ci.org/sarnold/gwocss
+   :alt: Build status
 
 .. image:: https://img.shields.io/github/issues/sarnold/gwocss
    :target: https://github.com/sarnold/gwocss/issues?q=is:issue+is:open
-   :alt: Open Issues
+   :alt: Open issues
 
 .. sidebar:: Original code: Copyright (C) 2002 Francis Ludwig
-   :subtitle: GNU/Linux port: Copyright (C) 2003-2020 Stephen L Arnold
+   :subtitle: GNU/Linux port: Copyright (C) 2003-2021 Stephen L Arnold
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
