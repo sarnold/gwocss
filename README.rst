@@ -6,7 +6,7 @@
    :target: https://github.com/sarnold/gwocss/blob/master/COPYING
    :alt: License
 
-.. image:: https://img.shields.io/github/v/release/sarnold/gwocss?color=blue&include_prereleases   :alt: GitHub release (latest by date including pre-releases)
+.. image:: https://img.shields.io/github/v/release/sarnold/gwocss?color=blue&include_prereleases
    :target: https://github.com/arnold/gwocss/releases
    :alt: GitHub tag (including pre-release)
 
